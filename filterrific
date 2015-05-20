@@ -1,0 +1,8 @@
+    @filterrific = Filterrific.new(Movement,params[:filterrific] || session[:filterrific_movement])
+    @movements =  Movement.filterrific_find(@filterrific).page(params[:page]) 
+    session[:filterrific_movement] = @filterrific.to_hash
+
+    respond_to do |format|
+      format.html
+      format.js
+	end
